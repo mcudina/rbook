@@ -1,0 +1,14 @@
+bookdown::gitbook:
+  highlight: tango
+  css: style.css
+  config:
+    fontsettings: no
+    # search: yes
+    toc_depth:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">A book on R</a></li>
+    sharing: null
+      
+    
