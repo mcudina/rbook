@@ -1,6 +1,6 @@
 --- 
-title: "A book on R"
-author: "Milica Cudina"
+title: "R on a need-to-know basis"
+author: "Milica Cudina and Gordan Zitkovic"
 date: "last updated -  `r Sys.Date()`"
 documentclass: book
 github-repo: gordanz/rbook
@@ -10,7 +10,7 @@ site: bookdown::bookdown_site
 
 # Preface {-}
 
-This is a book on R. And this is Swifty
+This is what your need to know of R. And this is Swifty!
 
 ```{r echo=FALSE, out.width= "35%", out.extra='style="float:right; padding:10px"'}
 knitr::include_graphics('pics/swifty.jpg')
