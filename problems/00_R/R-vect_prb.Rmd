@@ -1,7 +1,0 @@
-1. Construct a vector $x$ which contains all numbers from $1$ to $100$.
-
-2. Construct a vector $y$ which contains *squares* of all numbers between $20$ and $2000$.
-
-3. Construct a vector $z$ which contains only those components of $y$ whose values are between $400,000$ and $500,000$.
-
-4. Compute the average (arithmetic mean) of all the components of $z$. There is an R function that does that for you - find it!

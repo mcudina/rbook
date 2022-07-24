@@ -1,9 +1,0 @@
-Let `x=rnorm(1000)` and `y=rnorm(1000)`. For each of the following pairs, use the permutation test to decide whether they  are independent or not
-
-   a) `x^2+y^2` and `y^2`
-   b) `(x+y)/sqrt(2)` and `(x-y)/sqrt(2)`
-   c) `x` and `1`
-   d) `x^2+y^2` and `atan(y/x)`. 
-
-(Note: do not worry about dividing by $0$ in d. It will  happen with probability $0$.)
-   
