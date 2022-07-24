@@ -1,0 +1,10 @@
+Estimate the following integrals using Monte Carlo 
+
+a) $\int_0^1 \cos(x)\, dx$
+
+b) $\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}\frac{e^{-x^2/2}}{1+x^4}\,dx$
+
+c) $\int_0^{\infty} e^{-x^3-x}\, dx$
+   
+d) $\int_{-\infty}^{\infty} \frac{\cos(x^2)}{1+x^2}\, dx$ (extra credit) 
+

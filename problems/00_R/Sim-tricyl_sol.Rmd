@@ -1,0 +1,25 @@
+By the very construction, it is clear that the entire tricylinder lies
+within the cube $[-1,1]\times [-1,1] \times[-1,1]$. Therefore, we can
+compute its volume by simulating random draws from the uniform
+distribution in that cube, and computing the relative frequence of
+those values that fall inside the tricylinder. The whole point is
+that it is easy to check, given a point $(x,y,z)$,  whether it lies
+inside the tricylinder or not. Indeed, the answer is "yes" if and
+only if all three of the following inequalities are satisfied: $$
+x^2+y^2 \le 1,\  x^2+z^2\leq 1 \text{ and } y^2+z^2\leq 1.$$
+
+```{r} 
+nsim=10000 
+x = runif(nsim, min=-1, max=1) 
+y = runif(nsim, min=-1, max=1) 
+z = runif(nsim, min=-1, max=1) 
+is_in = (x^2+y^2 <= 1) & (x^2+z^2 <= 1) & (y^2+z^2 <= 1)
+
+(2^3*sum (is_in)/nsim)
+```
+
+We multiplied by $2^3$ because that is the volume of the cube
+$[-1,1]\times [-1,1] \times [-1,1]$. Without it, we would get the
+portion of the cube taken by the tricylinder, and not its volume. 
+
+The true value of $8(2-\sqrt{2})$ is, approximately, $4.6862$.

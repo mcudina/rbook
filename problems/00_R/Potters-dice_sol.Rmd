@@ -1,0 +1,113 @@
+ 1. Here are three different methods you can use to do this problem:
+
+    *Sampling without replacement:*
+
+    The three magical dice sample *without* replacement from the set $\{1,2,3,4,5,6\}$, so we can simply do the following:
+    ```{r echo = 2:10}
+    options(digits = 2)
+    nsim = 10000
+    sims = data.frame( 
+      t(replicate(nsim, sample(c(1,2,3,4,5,6), size=3, replace = FALSE)))
+      )
+    colnames(sims) = c("x","y","z")
+    ```
+
+
+
+    *The rejection method:*
+
+    We simulate three regular dice, and then simply reject all outcomes where two of the  numbers are the same:
+
+
+    ```{r}
+    nsim = 25000
+    x0 = sample(c(1,2,3,4,5,6), size= nsim, replace = TRUE)
+    y0 = sample(c(1,2,3,4,5,6), size= nsim, replace = TRUE)
+    z0 = sample(c(1,2,3,4,5,6), size= nsim, replace = TRUE)
+
+    good = (x0 != y0) & (y0 != z0) & (x0 != z0)
+
+    sims = data.frame(x = x0[good],
+                      y = y0[good],
+                      z = z0[good]
+                      )
+    nsim = dim(sims)[1] # we rejected a random number of draws
+    ```
+
+
+    *Using `sample`:*
+
+    We need to make the list of all allowed combinations (no repeats) and then sample the 
+    entire triplet of dice at once. I am using `rbind` to append a row to a data frame, but you can do this in many other ways. 
+
+    ```{r}
+    nsim = 100000
+    df = data.frame()
+    for (i in 1:6) {
+      for (j in 1:6) {
+        for (k in 1:6) { 
+          if ( (i != j) & (j != k) & (i != k) ) {
+            df = rbind(df, c(i,j,k) )
+        }}}}
+    colnames(df) = c("x","y","z")
+
+    rows = as.numeric(row.names(df)) # as.numeric needed to turn strings into integers
+    sampled_rows = sample(rows, nsim, replace = TRUE)
+
+    sims = df[sampled_rows,]
+    ```
+
+
+ 2. 
+    The probability of seeing a pair $(i,j)$ is $0$ if $i=j$ and $1/30$ otherwise (where $30$ is the number of pairs of different numbers).
+
+
+    ```{r}
+    table_sim = table(sims$x, sims$y)/nsim
+    table_th = matrix(1/30, ncol = 6, nrow = 6 )
+    for (i in 1:6) 
+      table_th[ i , i ]=0
+    (error = table_sim-table_th)
+
+    ```
+
+
+ 3.
+    ```{r}
+    good = (sims$x + sims$y == 6)
+    z_cond = sims$z[good]
+    (table_sim = table(z_cond)/length(z_cond))
+    ```
+
+
+ 4. 
+    We can reuse the code from above (simulation using `sample`) to list all 
+  possible elementary outcomes with $x+y=6$ and then count the frequencies of different values of the third die in this list (or we could simply do that on a piece of paper):
+
+
+    ```{r}
+    df = data.frame()
+    for (i in 1:6) {
+      for (j in 1:6) {
+        for (k in 1:6) { 
+          if ( (i != j) & (j != k) & (i != k) & (i+j == 6)) {
+            df = rbind(df, c(i,j,k) )
+          }
+        }
+      }
+    }
+    colnames(df) = c("x","y","z")
+    (table_th= table(df$z)/length(df$z))
+    ```
+
+
+    The error is given by:
+
+    ```{r}
+    options(digits=2)
+    (error = table_sim - table_th)
+    ```
+
+
+
+

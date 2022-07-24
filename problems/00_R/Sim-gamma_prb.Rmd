@@ -1,0 +1,21 @@
+1.  
+    Find the gamma distribution in R's help system. The only
+    thing you need to know about it is that it comes with two positive
+    parameters $k$ and $\theta$ (called `shape` and `scale` in R).
+    Simulate $n=10000$ draws from the gamma distribution with parameters
+    $k=2$ and $\theta=1$. Plot a density histogram of your
+    simulations as well as the pdf of the underlying distribution on the
+    same plot. Repeat for $3$ more choices (left to you) of the parameters $k$ and $\theta$. 
+ 
+2.  Let $X$ be a gamma-distributed random variable with parameters
+$k=2$ and $\theta=1$ (as above), and let $Y_1, Y_2$ be a independent standard 
+normals (also independent of $X$). Estimate the
+probability ${\mathbb P}[ X > Y_1^2 + Y_2^2 ]$ using Monte Carlo. 
+Check graphically whether $XY_1$ and
+$X Y_2$ are independent.
+
+3. Let $X$, $Y$ and $Z$ be three independent random variables
+with the gamma distribution and the scale parameter $\theta=1$. Their shape parameters are, however different, and equal to $1,2$ and $3$, respectively. 
+Use simulation (and associated plots) to make an educated guess about the distribution of 
+$X+Y+Z$ and its parameters. (Hint: the parameters will be nice round numbers.)
+

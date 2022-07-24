@@ -1,0 +1,21 @@
+1. Let $f_1$ and $f_2$ be two pdfs. We take a constant $\alpha \in (0,1)$ and define the function $f$ by
+$$ f(x) = \alpha f_1(x) + (1-\alpha) f_2(x).$$
+The function $f$ is the pdf of a third distribution, which is called the
+**mixture of $f_1$ and $f_2$ with weights $\alpha$ and $1-\alpha$**.
+Assuming that you know how to simulate from the distributions with pdfs $f_1$
+and $f_2$, how would you draw $10,000$ simulations from the mixture $f$? Show
+your method on the example of a mixture of $N(0,1)$ and $N(4,1)$ with
+$\alpha=2/3$. Plot the histogram of the obtained sample (play with the
+parameter `breaks` until you get a nice picture.)
+   
+   (*Hint:* start with two vectors, the first containing $10,000$ simulations from
+$f_1$ and the second from $f_2$. Then "toss" $10,000$ biased coins with
+$\mathbb{P}[ H ] = \alpha$ ... )
+
+2. The **double exponential** or
+**Laplace** distribution is a continuous probability distribution whose pdf is
+given by $$ \tfrac{1}{2} \exp(-|x|), x\in {\mathbb R}.$$ This distribution
+is not built into R. How would you produce simulations from the double
+exponential using R?
+
+

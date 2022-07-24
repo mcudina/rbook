@@ -1,0 +1,40 @@
+1.
+     ```{r}
+     x = rweibull(10000, shape = 2, scale = 3)
+     hist(x)
+     ```
+2.
+     Let $X$ be a normally distributed random variable, with parameters $\mu_X$ and $\sigma_X$. When we apply a linear transformation $Y = \alpha X + \beta$ to X, the result $Y$ has a normal distribution again, but with different parameters. These parameters, call them $\mu_Y$ and $\sigma_Y$, are easily identified by taking the expected value and the variance:
+
+     \begin{align} \mu_Y & = \EE[Y] = \alpha \EE[X] + \beta = \alpha \mu_X + \beta \\
+     \sigma_Y^2 & = \Var[Y] = \Var[\alpha X + \beta] = \alpha^2 \Var[X] = \alpha^2 \sigma_X^2 
+     \end{align}
+
+     In the problem we are given $\mu_X=0$ and $\sigma_X=1$, so we must take $\alpha = 0.5$ and $\beta=1$ to get $\mu_Y=1$ and $\sigma_Y=0.5$ (note that this is
+     exactly the opposite of taking $z$-scores, where we transform a general normal into the standard normal). In R
+
+
+     ```{r}
+     x = rnorm(10000)
+     y = 0.5*x+1
+     ```
+
+     Let's check that the parameters of `y` are as as required: 
+
+     ```{r}
+     (mean(y))
+     (sd(y))
+     ```
+
+
+3.
+     ```{r fig.align="center"}
+     x=seq(-3,3,by=0.1)
+     y=pnorm(x)
+     plot(x,y,
+          type="l",
+          ylab="F(x)",
+          main="The CDF of the standard normal")
+     ```
+
+

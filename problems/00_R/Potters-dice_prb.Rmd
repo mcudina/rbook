@@ -1,0 +1,9 @@
+Harry Potter's cousin Nigel Potter owns a magical set of three dice. They behave just like any three (fair, independent) 6-sided dice, except for the fact that, when thrown together, they always show three *distinct* numbers. In other words, the outcomes with repeating numbers never happen, while all combinations of three distinct numbers are equally likely. 
+
+1. Create a large ($\ge 10,000$) set of simulations of throws of these magical dice. Use any method you like. 
+
+2. Output the contingency table for the outcomes of the first two dice, and compare to theoretical probabilities. 
+
+3. Draw samples from the  conditional distribution of the outcome of the third die, given that the sum on the first two is $6$. Display the contingency table for your outcomes.  
+
+4. (Extra credit) Find the (theoretical) conditional distribution of the third die given that the sum on the first two is $6$, and compare it to your result from 3. above. 

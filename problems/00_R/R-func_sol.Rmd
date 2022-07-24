@@ -1,0 +1,72 @@
+1.
+    ```{r}
+    f = function(x) {
+      if (x>5) {
+        return(5)
+      } else {
+        return(x)
+      }
+    }
+    ```
+    This could be made shorter using the function `ifelse`:
+
+    ```{r}
+    f = function(x)
+      ifelse(x>5,5,x)
+    ```
+
+
+
+2. 
+    ```{r}
+    g <- function(x) {
+      if (x>2 & x<3) {
+        return(TRUE)
+      } else {
+        return(FALSE)
+      }
+    }
+
+    # more R-ic (what's "Pythonic", but for R?)
+    g <- function(x) 
+      x>2 & x<3
+     
+    ```
+
+
+3.
+    ```{r}
+    angle <- function(x,y) {
+      length_x = sqrt(sum(x**2))
+      length_y = sqrt(sum(y**2))
+      if (length_y == 0 | length_x == 0) {
+        return(0)
+      } else {
+        inn_prod = sum(x*y)
+        cos_alpha = inn_prod/(length_x * length_y)
+        return(acos(cos_alpha)/pi*180)
+      }
+    }
+
+    # some testing
+
+    # should be 0
+    (angle( c(1,1), c(1,1) ) )
+
+    # should be 0
+    (angle( c(0,0), c(1,2)))
+
+    # should be 45
+    (angle( c(0,1), c(1,1)))
+
+    # should be 90
+    (angle( c(1,0), c(0,1)))
+    ```
+
+
+    *Note:* This function may fail for certain (rare) values of
+     arguments because the variable `cos_alpha` may happen to take a
+     value slightly larger than $1$ or slightly smaller then $-1$ due
+     to rounding errors. When applied to such a value `acos` will
+     return a  `NaN`. For simplicity, all of this is ignored in the
+     solution above.

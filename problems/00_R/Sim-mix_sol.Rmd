@@ -1,0 +1,82 @@
+1. 
+   The idea is that before each draw a biased coin (with $\PP[H]=\alpha$) is
+    tossed. If $H$ is obtained, we draw from the distribution with pdf $f_1$.
+    Otherwise, we draw from the distribution with pdf $f_2$. We write a function
+    which performs one such simulation, and then use the command `replicate` to
+    call it  several times and  store the results in the vector:
+   ```{r}
+   single_draw = function() {
+         coin = sample(c(1,2), prob = c(2/3, 1/3), size=1, replace = TRUE)
+         if  (coin == 1) 
+            return(rnorm(1))
+         else
+            return(rnorm(1,mean=4, sd=1))
+   }
+
+   nsim=20000
+   y = replicate(nsim, single_draw())
+    
+   hist(y)
+   ```
+
+
+   As you can see, the histogram has two "humps", one centered around 
+   $0$ and the
+   other centered around $4$. The first one is taller, which reflects the higher
+   weight ($\alpha=2/3$) that $N(0,1)$ has in this mixture.
+
+   If you wanted to write a more succinct vectorized code (which is not
+   necessarily faster in this case), you could also do something like this
+
+   ```{r}
+   nsim=10000
+   alpha = 2/3
+   x1=rnorm(nsim)
+   x2=rnorm(nsim, mean=4, sd = 1)
+   coin = sample(c(TRUE, FALSE), size = nsim, 
+                  prob=c(alpha,1-alpha), replace=TRUE)
+   y = ifelse(coin, x1,x2)
+   ```
+   
+   The function `ifelse` is a vectorized version of the `if-then` blok and takes
+   three arguments of equal length. The first one is a vector of logical values
+   `c`, and the other two, `x1, x2` only need to be of the same type. The result
+   of is a vector whose value at the position `i` is `x1[i]` if `c[i]==TRUE` and
+   `x2[i]` otherwise.
+
+2. 
+   The Laplace distribution can be understood as a mixture, with $\alpha=1/2$, of
+   two distributions. The first one is an exponential, and the second one is obtained 
+  from by putting the minus sign in front of it.  
+   Using our strategy from part 1. above,
+   we could get simulations of it as follows:
+
+   ```{r}
+   nsim=100000
+   alpha = 1/2
+   x1=rexp(nsim)
+   x2=-rexp(nsim) # note the minus sign in front of rexp
+   coin = sample(c(TRUE, FALSE), size = nsim, 
+                                 prob=c(alpha,1-alpha), replace=TRUE)
+   y = ifelse(coin, x1,x2)
+   hist(y) 
+   ```
+
+   You can do this more efficiently if you realize that every time we toss a
+   coin and choose between `x1` and `x2`, we are really choosing the sign in
+   front of an exponentially distributed random variable. In other words, we can
+   use `coin` as a vector of random signs for a vector or draws from the
+   exponential distribution:
+   
+   
+   ```{r}
+   nsim=10000
+   alpha=1/2
+   x=rexp(nsim)
+   coin = sample(c(-1, 1), size = nsim, prob=c(alpha,1-alpha), replace=TRUE)
+   y = coin * x
+   hist(y)
+   ```
+   
+   
+   

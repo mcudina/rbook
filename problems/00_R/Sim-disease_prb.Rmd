@@ -1,0 +1,7 @@
+Exactly one percent of the people in a given population have a certain
+disease. The accuracy of the diagnostic test for it is such that it
+detects the sick as sick with probability $0.95$ and the healthy as
+healthy with probability $0.9$. A person chosen at random from the
+population tested positive. What is the probability the he/she is, in
+fact, sick. Do the problem both analytically and by Monte Carlo.
+
