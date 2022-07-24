@@ -5,7 +5,7 @@ language:
     chapter_name: "Chapter "
 before_chapter_script: ["before-script.R"]
 delete_merged_file: true
-output_dir: "../docs/"
+output_dir: "docs"
 self_contained: FALSE
 view: https://github.com/gordanz/rbook/blob/master/source/%s
 repo: https://github.com/gordanz/rbook
