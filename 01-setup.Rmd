@@ -270,9 +270,10 @@ winners( c(1,4,5,6,2), c(2,3,3,9,2))
 ```
 Note how we used several things we learned above in this function. First, we defined the logical vector which indicates where `x` is larger than `y`. Then, we used logical indexing to return only certain components of `x`. 
 
+
 ### If-else statements
 
-Our final element of R is its `if-else` statement. The syntax of the `if` statement is
+The syntax of the `if` statement is
 ```{r eval=FALSE}
 if (condition) {
   statement
@@ -313,6 +314,63 @@ distance_or_zero =  function(x,y){
 distance_or_zero(1.2,1.6)
 distance_or_zero(2,3)
 ```
+
+### For loops
+
+We use `for` loops when we want to repeat a particular block of code in prespecified instances. The syntax of the `for` loop is
+```{r eval=FALSE}
+for (counter in vector) {
+  block
+}
+```
+where `counter` stands for a "dummy" variable, `vector` is a vector containing the possible values the "dummy" variable runs through, and `block` is any block of `R` code. 
+
+For example, let's create a vector of squares of the first 10 prime numbers. 
+```{r}
+primes = c(2,3,5,7,11,13,17,19,23,29)
+squared.primes=c()
+for (x in primes){
+  squared.primes=c(squared.primes, x^2)
+}
+squared.primes
+```
+Of course, the above toy example is for illustrative purposes only since in `R` we could easily have done the following:
+```{r}
+primes = c(2,3,5,7,11,13,17,19,23,29)
+squared.primes.quick=primes^2
+squared.primes.quick
+```
+
+### While loops
+
+`while` loops come in handy when we need a specific block of code repeated while a particular condition is satisfied (or, equivalently, until a contrarty condition is met). The syntax of the `while` loop is: 
+```{r eval=FALSE}
+while (condition) {
+  block
+}
+```
+where `condition` is anything that has a logical value, and `block` is any block of `R` code. First `R` evaluates `condition`. If it is true, it runs `block`. This pair od procedures will be repeated until the `condition` becomes false. Note that, as opposed to the `for` loop, if one is not careful, the `while` loop can easily run forever! 
+
+Here is a chunk of code defining a function which lists all the divisors any number smaller than 100. To verify that the function is well defined, we evaluate it at a few values. 
+```{r}
+factors = function(x){
+  if (x>100){
+    print("The entry is too big!")
+  } else {
+    i = 1
+    while (i<= x) {
+      if (x/i==floor(x/i)){
+        print(i)
+      }
+      i=i+1
+    }
+  }
+}
+factors(32)
+factors(44)
+factors(161)
+```
+Note the line `i=i+1` in the above code. That is the line which allows the `condition` of the `while` loop to update at every cycle through the loop and to eventually exit the loop. 
 
 
 ## Additional Problems for Chapter 1
