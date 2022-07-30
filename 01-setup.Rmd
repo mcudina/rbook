@@ -370,7 +370,7 @@ factors(32)
 factors(44)
 factors(161)
 ```
-Note the line `i=i+1` in the above code. That is the line which allows the `condition` of the `while` loop to update at every cycle through the loop and to eventually exit the loop. 
+Note the line `i=i+1` in the above code. That is the line which allows the `condition` of the `while` loop to update at every cycle through the loop and to eventually exit the loop. Also note the use of the command `floor`. The command returns the largest integer smaller than or equal to its argument. 
 
 
 ## Additional Problems for Chapter 1
