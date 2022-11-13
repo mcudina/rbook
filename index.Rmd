@@ -4,7 +4,7 @@ author: "Milica Cudina and Gordan Zitkovic"
 date: "last updated -  `r Sys.Date()`"
 documentclass: book
 github-repo: gordanz/rbook
-description: "A book on R"
+description: A book on R
 site: bookdown::bookdown_site
 ---
 
