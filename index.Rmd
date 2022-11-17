@@ -5,6 +5,8 @@ date: "last updated -  `r Sys.Date()`"
 documentclass: book
 github-repo: gordanz/rbook
 description: A book on R
+output:
+  bookdown::gitbook: default
 site: bookdown::bookdown_site
 ---
 
