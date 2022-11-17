@@ -14,3 +14,7 @@ for-loops
 while-loops
 additional-problems-for-chapter-1
 endnotes
+exr:unlabeled-div-1
+exr:unlabeled-div-3
+exr:unlabeled-div-5
+exr:unlabeled-div-7
